@@ -1,6 +1,20 @@
 <template>
   <div id="app">
-    <h1>Test</h1>
+    <h1>{{msg}}</h1>
+    <span v-bind:title="message">
+      Hover your mouse over me for a few seconds
+      to see my dynamically bound title!
+    </span>
+    <br/><br/><br/>
+    <span v-if="seen">Now you see me</span>
+
+    <br/><br/><br/>
+    <ol>
+      <li v-for="todo in todos">
+        {{ todo.text }}
+      </li>
+    </ol>
+
   </div>
 </template>
 
@@ -9,7 +23,14 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      message: 'You loaded this page on ' + new Date().toLocaleString(),
+      seen: true,
+      todos: [
+        { text: 'Learn JavaScript' },
+        { text: 'Learn Vue' },
+        { text: 'Build something awesome1' }
+      ]
     }
   }
 }
